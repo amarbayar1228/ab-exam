@@ -38,6 +38,7 @@ const RegEdit = (props) =>{
                  username: getInfo.username,
                  email: getInfo.email,
                  password: getInfo.password,
+                 phone: getInfo.phone,
                  description: getInfo.description,  }}  onFinish={onFinish} >
             <Form.Item label="Title" name="title" rules={[{ required: true, message: 'Please input your Title!'}]}>
                     <Input placeholder="Title" />
@@ -46,11 +47,14 @@ const RegEdit = (props) =>{
                 <Input placeholder="Username" />
             </Form.Item>
             <Form.Item label="email" name="email" rules={[{ required: true, message: 'Please input your email!'}]}>
-                    <Input type="email" placeholder="Email" />
+                <Input type="email" placeholder="Email" />
             </Form.Item>
             <Form.Item label="Password" name="password" rules={[ { required: true, message: 'Please input your Password!'}]}>
-            <Input.Password />
+              <Input.Password />
             </Form.Item>  
+            <Form.Item label="Phone" name="phone" rules={[ { required: true, message: 'Please input your Phone!'}]}>
+            <Input placeholder="Phone" />
+            </Form.Item> 
             <Form.Item label="Description" name="description" rules={[ { required: true, message: 'Please input your Description!'}]}>
                 <TextArea placeholder="Description" showCount/>
             </Form.Item> 

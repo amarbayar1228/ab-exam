@@ -50,6 +50,7 @@ const Registration = () =>{
         email: e[1].values.email,
         password: e[1].values.password,
         description: e[1].values.description,
+        phone: e[1].values.phone,
         action: e[0],
         allData: e
       }
@@ -145,6 +146,18 @@ const Registration = () =>{
         width: '100px',
         ellipsis: true,
         ...getColumnSearchProps('email'),
+        render: (a)=> <div style={{display: "flex"}}> 
+                        <Paragraph copyable={{text: a }}></Paragraph>
+                        <div style={{paddingLeft: "5px"}}>{a}</div>
+                      </div>
+      },
+      {
+        title: 'Phone',
+        dataIndex: 'phone',
+        key: 'phone',
+        width: '100px',
+        ellipsis: true,
+        ...getColumnSearchProps('phone'),
         render: (a)=> <div style={{display: "flex"}}> 
                         <Paragraph copyable={{text: a }}></Paragraph>
                         <div style={{paddingLeft: "5px"}}>{a}</div>

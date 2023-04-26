@@ -41,6 +41,9 @@ const AddRegistration = (props) =>{
         <Form.Item label="email" name="email" rules={[{ required: true, message: 'Please input your email!'}]}>
                 <Input type="email" placeholder="Email" />
         </Form.Item>
+        <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please input your Phone!'}]}>
+                <Input type="phone" placeholder="Phone" />
+        </Form.Item>
         <Form.Item label="Password" name="password" rules={[ { required: true, message: 'Please input your Password!'}]}>
           <Input.Password />
         </Form.Item>  

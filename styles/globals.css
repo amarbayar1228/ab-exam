@@ -10,3 +10,7 @@ float: left;
 #components-form-demo-normal-login .login-form-button {
 width: 100%;
 }
+
+body{
+  margin: 0;
+}

@@ -3,9 +3,9 @@ import axios from "../../axios-orders";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import css from "./style.module.css";
+import { HomeOutlined, ContactsOutlined, LogoutOutlined } from '@ant-design/icons';
 const BaseLayout = (props) =>{  
     const router = useRouter();
-
     const [loading, setLoading] = useState(true);
     const [localId, setLocalId] = useState(false);
     useEffect(()=>{
@@ -56,20 +56,23 @@ const BaseLayout = (props) =>{
  
     return <div> 
         {loading ? <Spin /> : 
-            <div>  
+            <div>
+                <div className={css.Hdr}> 
+                    <div style={{paddingLeft: "20px"}}> AB</div>
+                </div>
                 <div style={{display: "flex", gap: "20px", justifyContent: "center", marginTop: "20px"}}> 
                     {localId ? 
                     <div className={css.Menu}> 
-                        <Button onClick={()=>router.push("/")}>Home</Button> 
-                        <Button onClick={()=>router.push("/registration")}>Registration</Button> 
-                        <Button onClick={logOut}>Log Out</Button>
+                        <Button type="default" onClick={()=>router.push("/")} icon={<HomeOutlined />} style={{marginLeft: "10px"}}>Home</Button> 
+                        <Button onClick={()=>router.push("/registration")} icon={<ContactsOutlined />}>Registration</Button> 
+                        <Button onClick={logOut} icon={<LogoutOutlined />} style={{marginRight: "10px"}}>Log Out</Button>
                     </div>
                     : 
-                    <>     
-                        <Button onClick={()=>router.push("/")}>Home</Button>
+                    <div className={css.Menu}>     
+                        <Button type="default" onClick={()=>router.push("/")} style={{marginLeft: "10px"}}>Home</Button>
                         <Button onClick={()=>router.push("/login")}>Sign in</Button>
-                        <Button onClick={()=>router.push("/sign-up")}>Sign up</Button>
-                    </>
+                        <Button onClick={()=>router.push("/sign-up")} style={{marginRight: "10px"}}>Sign up</Button>
+                    </div>
                     }
                 </div>
                 {props.children} 
