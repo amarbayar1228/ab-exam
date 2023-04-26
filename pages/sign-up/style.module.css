@@ -6,8 +6,9 @@
 }
 .FromCss{ 
     border: 1px solid #ccc;
-    padding: 50px;
-    width: 700px;
+    padding: 28px;
+    width: 100%;
     max-width: 800px;
+    margin: 11px;
     border-radius: 10px;
  }

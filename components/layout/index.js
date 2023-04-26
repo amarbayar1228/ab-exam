@@ -2,7 +2,7 @@ import { Button, Spin } from "antd";
 import axios from "../../axios-orders";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
+import css from "./style.module.css";
 const BaseLayout = (props) =>{  
     const router = useRouter();
 
@@ -59,11 +59,11 @@ const BaseLayout = (props) =>{
             <div>  
                 <div style={{display: "flex", gap: "20px", justifyContent: "center", marginTop: "20px"}}> 
                     {localId ? 
-                    <> 
+                    <div className={css.Menu}> 
                         <Button onClick={()=>router.push("/")}>Home</Button> 
                         <Button onClick={()=>router.push("/registration")}>Registration</Button> 
                         <Button onClick={logOut}>Log Out</Button>
-                    </>
+                    </div>
                     : 
                     <>     
                         <Button onClick={()=>router.push("/")}>Home</Button>
