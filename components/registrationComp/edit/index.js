@@ -6,9 +6,8 @@ const RegEdit = (props) =>{
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [getInfo, setInfo] = useState({});
      
-    const showModal = () => {
-    console.log("dialog: ", props.info);
-        setInfo(props.info)
+    const showModal = () => { 
+      setInfo(props.info)
       setIsModalOpen(true);
     }; 
     const handleCancel = () => {
