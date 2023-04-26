@@ -27,6 +27,7 @@ const BaseLayout = (props) =>{
             const expIn = expireDate.getTime() - new Date().getTime(); 
             await setTimeout(()=>{ 
                 router.push("/");
+                
             },expIn)
         } else {
             const body = {
@@ -55,7 +56,7 @@ const BaseLayout = (props) =>{
     }
  
     return <div> 
-        {loading ? <Spin /> : 
+        {loading ? <Spin style={{display: "flex", alignItems: "center", justifyContent: "center", marginTop: "40vh"}}/> : 
             <div>
                 <div className={css.Hdr}> 
                     <div style={{paddingLeft: "20px"}}> AB</div>
@@ -63,15 +64,15 @@ const BaseLayout = (props) =>{
                 <div style={{display: "flex", gap: "20px", justifyContent: "center", marginTop: "20px"}}> 
                     {localId ? 
                     <div className={css.Menu}> 
-                        <Button type="default" onClick={()=>router.push("/")} icon={<HomeOutlined />} style={{marginLeft: "10px"}}>Home</Button> 
-                        <Button onClick={()=>router.push("/registration")} icon={<ContactsOutlined />}>Registration</Button> 
-                        <Button onClick={logOut} icon={<LogoutOutlined />} style={{marginRight: "10px"}}>Log Out</Button>
+                        <Button size="large" type="default" onClick={()=>router.push("/")} icon={<HomeOutlined />} style={{marginLeft: "10px"}}>Home</Button> 
+                        <Button size="large" onClick={()=>router.push("/registration")} icon={<ContactsOutlined />}>Registration</Button> 
+                        <Button size="large" onClick={logOut} icon={<LogoutOutlined />} style={{marginRight: "10px"}}>Log Out</Button>
                     </div>
                     : 
                     <div className={css.Menu}>     
-                        <Button type="default" onClick={()=>router.push("/")} style={{marginLeft: "10px"}}>Home</Button>
-                        <Button onClick={()=>router.push("/login")}>Sign in</Button>
-                        <Button onClick={()=>router.push("/sign-up")} style={{marginRight: "10px"}}>Sign up</Button>
+                        <Button size="large" type="default" onClick={()=>router.push("/")} style={{marginLeft: "10px"}}>Home</Button>
+                        <Button size="large" onClick={()=>router.push("/login")}>Sign in</Button>
+                        <Button size="large" onClick={()=>router.push("/sign-up")} style={{marginRight: "10px"}}>Sign up</Button>
                     </div>
                     }
                 </div>

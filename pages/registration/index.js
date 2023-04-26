@@ -2,12 +2,14 @@
 import axios from "../../axios-orders";
 import { useEffect, useState, useRef} from "react";
 import { SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table, Spin, Typography } from 'antd'; 
+import { Button, Input, Space, Table, Spin, Typography, Breadcrumb } from 'antd'; 
 import Highlighter from 'react-highlight-words';
 import AddRegistration from "@/components/registrationComp/addRegistration";
 import BaseLayout from "@/components/layout";
 import RegEdit from "@/components/registrationComp/edit";
 import RegDelete from "@/components/registrationComp/delete";
+import css from "./style.module.css"
+import { useRouter } from "next/router";
 const { Paragraph } = Typography;
 
 const Registration = () =>{
@@ -17,6 +19,7 @@ const Registration = () =>{
     const searchInput = useRef(null);
     const [getData, setData] = useState([]) 
     const [loadingTable, setLoadingTable] = useState(false);
+    const router = useRouter();
     useEffect(()=>{
         setTimeout(()=>{
           getRegistrationList();
@@ -116,10 +119,17 @@ const Registration = () =>{
     });
     const columns = [
       {
+        title: '№',
+        dataIndex: 'key',
+        key: 'key',
+        width: '20px',
+        ellipsis: true,
+      },
+      {
         title: 'Title',
         dataIndex: 'title',
         key: 'title',
-        width: '100px',
+        width: '70px',
         ellipsis: true,
         ...getColumnSearchProps('title'),
         render: (a)=> <div style={{display: "flex"}}> 
@@ -131,7 +141,7 @@ const Registration = () =>{
         title: 'Username',
         dataIndex: 'username',
         key: 'username',
-        width: '100px',
+        width: '70px',
         ellipsis: true,
         ...getColumnSearchProps('username'),
         render: (a)=> <div style={{display: "flex"}}> 
@@ -155,7 +165,7 @@ const Registration = () =>{
         title: 'Phone',
         dataIndex: 'phone',
         key: 'phone',
-        width: '100px',
+        width: '45px',
         ellipsis: true,
         ...getColumnSearchProps('phone'),
         render: (a)=> <div style={{display: "flex"}}> 
@@ -172,14 +182,17 @@ const Registration = () =>{
         ...getColumnSearchProps('password'),
         render: (a)=> <div style={{display: "flex"}}> 
                         <Paragraph copyable={{text: a }}></Paragraph>
-                        <div style={{paddingLeft: "5px"}}>{a}</div>
+                        <div style={{paddingLeft: "5px"}}>
+                          <Input.Password value={a} size="small"/>
+                        </div>
                       </div>
       },
       {
         title: 'Description',
         dataIndex: 'description',
         key: 'description',
-        width: '100px',
+        width: '70px',
+        ellipsis: true,
         ...getColumnSearchProps('description'),
         sorter: (a, b) => a.description.length - b.description.length,
         sortDirections: ['descend', 'ascend'],
@@ -192,7 +205,7 @@ const Registration = () =>{
         title: 'Action',
         dataIndex: 'allData',
         key: 'allData',
-        width: '100px',
+        width: '40px',
         render: (rec)=> <div style={{display: "flex", gap: "10px"}}>  
                 <RegEdit data={rec[0]} getRegistrationList={getRegistrationList} info={rec[1].values}/>
                 <RegDelete  data={rec[0]} getRegistrationList={getRegistrationList}/>  
@@ -203,10 +216,15 @@ const Registration = () =>{
     return<BaseLayout> 
             {loading ?  <Spin />
             : 
-            <div style={{margin: "50px auto", width: "1200px", maxWidth: "100%"}}>  
-                <AddRegistration getRegistrationList={getRegistrationList} />
-                <Table columns={columns} dataSource={data}  scroll={{y: 600, x: 1200}} loading={loadingTable}/>
+            <div>  <Breadcrumb
+            items={[ 
+              {title: <Button size="small" type="ghost" onClick={()=>router.push("/")}>Home</Button>}, 
+              {title: 'Registration'}]}/>
+            <div className={css.Formcss}>  
+                <AddRegistration getRegistrationList={getRegistrationList}/>
+                <Table columns={columns} dataSource={data}  scroll={{y: 600, x: 1200}} loading={loadingTable} style={{marginLeft: "10px"}} size="small"/>
                
+            </div>
             </div>
             }
     </BaseLayout>

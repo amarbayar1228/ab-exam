@@ -1,6 +1,6 @@
 import { Button, Popconfirm, message } from "antd"
-import axios from "../../../axios-orders"; 
-import { useEffect } from "react";
+import { DeleteOutlined } from '@ant-design/icons';
+import axios from "../../../axios-orders";  
 
 const RegDelete = (props) =>{ 
     
@@ -15,7 +15,7 @@ const RegDelete = (props) =>{
     }
     return<div> 
         <Popconfirm title="Sure to delete?" onConfirm={deleteFunc}>
-          <Button type="primary" danger>Delete</Button>
+          <Button type="primary" size="small" icon={<DeleteOutlined />} danger></Button>
         </Popconfirm>
     </div>
 }

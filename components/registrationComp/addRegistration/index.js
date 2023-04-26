@@ -27,11 +27,11 @@ const AddRegistration = (props) =>{
       }) 
     };
     return<>
-      <Button type="primary" onClick={showModal} style={{marginBottom: "10px"}}>
+      <Button type="primary" onClick={showModal} style={{marginBottom: "10px", marginLeft: "10px"}}>
             + Add 
       </Button>
       <Modal title="Registation add" open={isModalOpen} onCancel={handleCancel} footer={null}>
-      <Form  initialValues={{ remember: true, }}  onFinish={onFinish} >
+      <Form size="middle"  initialValues={{ remember: true, }}  onFinish={onFinish} >
           <Form.Item label="Title" name="title" rules={[{ required: true, message: 'Please input your Title!'}]}>
                 <Input placeholder="Title" />
           </Form.Item>
@@ -51,7 +51,7 @@ const AddRegistration = (props) =>{
             <TextArea placeholder="Description" showCount/>
         </Form.Item> 
         <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button"> Save </Button> 
+            <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}}> Save </Button> 
         </Form.Item>
         </Form>
       </Modal>

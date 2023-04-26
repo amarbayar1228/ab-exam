@@ -1,5 +1,6 @@
-import { Button, Form, Input, Modal, Popconfirm, message } from "antd"
+import { Button, Form, Input, Modal, message } from "antd"
 import axios from "../../../axios-orders";
+import { EditOutlined } from '@ant-design/icons';
 import { useState } from "react";
 const { TextArea } = Input;
 const RegEdit = (props) =>{ 
@@ -30,9 +31,9 @@ const RegEdit = (props) =>{
       }) 
     };
     return<div>
-       <Button type="primary" onClick={showModal}>Edit </Button>
+       <Button type="primary" onClick={showModal} size="small" icon={<EditOutlined />}></Button>
         <Modal title="Registation add" open={isModalOpen} onCancel={handleCancel} footer={null}>
-        <Form  initialValues={{ remember: true,
+        <Form  size="small" initialValues={{ remember: true,
                  title: getInfo.title, 
                  username: getInfo.username,
                  email: getInfo.email,
