@@ -18,8 +18,8 @@ const Registration = () =>{
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef(null);
     const [getData, setData] = useState([]) 
-    const [loadingTable, setLoadingTable] = useState(false);
-    const router = useRouter();
+    const [loadingTable, setLoadingTable] = useState(false); 
+    const router = useRouter(); 
     useEffect(()=>{
         setTimeout(()=>{
           getRegistrationList();
@@ -37,8 +37,8 @@ const Registration = () =>{
       const localId2 = localStorage.getItem("localId");
 
       axios.get(`registration.json?&auth=${token}&orderBy="localId"&equalTo="${localId2}"`).then((res)=>{ 
-          const data = Object.entries(res.data).reverse();
-          setData(data) 
+          const data = Object.entries(res.data).reverse(); 
+          setData(data)  
       }).catch((err)=>{
           console.log("err: ", err)
       }).finally(()=>{
@@ -222,7 +222,7 @@ const Registration = () =>{
               {title: 'Registration'}]}/>
             <div className={css.Formcss}>  
                 <AddRegistration getRegistrationList={getRegistrationList}/>
-                <Table columns={columns} dataSource={data}  scroll={{y: 600, x: 1200}} loading={loadingTable} style={{marginLeft: "10px"}} size="small"/>
+                <Table columns={columns} dataSource={data}  scroll={{y: 300, x: 1200}} loading={loadingTable} style={{marginLeft: "10px"}} size="small" pagination={{ total: 0, showTotal: (total) => `Total: ${total} items` }} />
                
             </div>
             </div>
