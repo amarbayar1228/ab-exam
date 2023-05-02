@@ -19,8 +19,8 @@ const SignUp = () =>{
     }
         axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAA_wX14i2xQr-owSd7-iAxcp4J3qRdgMI", body).then((res)=>{
             message.log("Success");
-            Router.push("/")
-            router.log(res.data);
+            router.push("/")
+            // console.log(res.data);
         }).catch((err)=>{
             console.log("err: ", err)
         })

@@ -27,7 +27,6 @@ const BaseLayout = (props) =>{
             const expIn = expireDate.getTime() - new Date().getTime(); 
             await setTimeout(()=>{ 
                 router.push("/");
-                
             },expIn)
         } else {
             const body = {
