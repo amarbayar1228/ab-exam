@@ -12,7 +12,7 @@ const body = {
     password: parseInt(values.password),
     returnSecureToken: true
 }
-axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAA_wX14i2xQr-owSd7-iAxcp4J3qRdgMI", body).then((res)=>{ 
+axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCkxKA3o1jlKxVN7DM12dNs_L6O5sPoG9w", body).then((res)=>{ 
     if(res.data.registered === true){ 
         const expIn =  res.data.expiresIn;
         const expireDate = new Date(new Date().getTime() + parseInt(expIn) * 1000); 
@@ -23,12 +23,12 @@ axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPasswor
         refreshToken(expIn * 1000)
 
         message.success("Success");
-        router.push("/registration");  
+        router.push("/new-words");  
     }else{ 
         message.error(res.data.errors[0].message)
     }
 }).catch((err)=>{
-    console.log("err: ", err)
+     message.error(err.code ? err.code : "Error")
 }) 
 };
 

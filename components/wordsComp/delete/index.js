@@ -2,16 +2,16 @@ import { Button, Popconfirm, message } from "antd"
 import { DeleteOutlined } from '@ant-design/icons';
 import axios from "../../../axios-orders";  
 
-const RegDelete = (props) =>{ 
+const Delete = ({axiosData, id}) =>{ 
     
     const deleteFunc = () =>{  
-        const token = localStorage.getItem("idToken"); 
-        axios.delete(`registration/${props.data}.json?&auth=${token}`).then((res)=>{  
+        const token = localStorage.getItem("idToken");  
+        axios.delete(`words/${id}.json?&auth=${token}`).then((res)=>{  
           message.success("deleted") 
-          props.getRegistrationList();
+          axiosData();
         }).catch((err)=>{ 
-            props.getRegistrationList();
-        }) 
+            message.error("error")
+        })
     }
     return<div> 
         <Popconfirm title="Sure to delete?" onConfirm={deleteFunc}>
@@ -19,4 +19,4 @@ const RegDelete = (props) =>{
         </Popconfirm>
     </div>
 }
-export default RegDelete
+export default Delete

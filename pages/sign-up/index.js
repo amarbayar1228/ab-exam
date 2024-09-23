@@ -17,12 +17,11 @@ const SignUp = () =>{
         password: values.password,
         returnSecureToken: true
     }
-        axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAA_wX14i2xQr-owSd7-iAxcp4J3qRdgMI", body).then((res)=>{
+        axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCkxKA3o1jlKxVN7DM12dNs_L6O5sPoG9w", body).then((res)=>{
             message.log("Success");
-            router.push("/")
-            // console.log(res.data);
+            router.push("/") 
         }).catch((err)=>{
-            console.log("err: ", err)
+            message.error(err.code ? err.code : "Error")
         })
     };
     return<BaseLayout>

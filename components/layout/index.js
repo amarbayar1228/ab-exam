@@ -21,6 +21,7 @@ const BaseLayout = (props) =>{
             
         },800) 
     },[])
+
     const refreshToken = async () =>{
         const expireDate = new Date(localStorage.getItem("expireDate"));
         if(expireDate > new Date()){
@@ -33,7 +34,7 @@ const BaseLayout = (props) =>{
                 grant_type: "refresh_token",
                 refresh_token: localStorage.getItem("refreshToken")
             }
-            axios.post("https://securetoken.googleapis.com/v1/token?key=AIzaSyAA_wX14i2xQr-owSd7-iAxcp4J3qRdgMI", body).then((res)=>{ 
+            axios.post("https://securetoken.googleapis.com/v1/token?key=AIzaSyCkxKA3o1jlKxVN7DM12dNs_L6O5sPoG9w", body).then((res)=>{ 
                 const expIn =  res.data.expires_in; 
                 const expireDate = new Date(new Date().getTime() + parseInt(expIn) * 1000); 
                 localStorage.setItem("idToken",  res.data.id_token)
@@ -63,9 +64,10 @@ const BaseLayout = (props) =>{
                 <div style={{display: "flex", gap: "20px", justifyContent: "center", marginTop: "20px"}}> 
                     {localId ? 
                     <div className={css.Menu}> 
-                        <Button size="large" type="default" onClick={()=>router.push("/")} icon={<HomeOutlined />} style={{marginLeft: "10px"}}>Home</Button> 
-                        <Button size="large" onClick={()=>router.push("/registration")} icon={<ContactsOutlined />}>Registration</Button> 
-                        <Button size="large" onClick={logOut} icon={<LogoutOutlined />} style={{marginRight: "10px"}}>Log Out</Button>
+                        <Button size="large" type="default" onClick={()=>router.push("/")} icon={<HomeOutlined />} style={{marginLeft: "10px"}}></Button> 
+                        <Button size="large" onClick={()=>router.push("/new-words")} icon={<ContactsOutlined />}>Words</Button> 
+                        <Button size="large" onClick={()=>router.push("/exam")} icon={<ContactsOutlined />}>exam</Button> 
+                        <Button size="large" onClick={logOut} icon={<LogoutOutlined />} style={{marginRight: "10px"}}></Button>
                     </div>
                     : 
                     <div className={css.Menu}>     
