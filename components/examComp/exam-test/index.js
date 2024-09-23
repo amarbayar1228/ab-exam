@@ -77,7 +77,7 @@ const ExamTest = ({ id, getData }) => {
                 </div>
             </Swiper>
 
-            <Modal title="Exam" open={isModalOpen} onOk={()=> setIsModalOpen(true)} onCancel={()=> setIsModalOpen(false)} footer={null}>
+            <Modal title="Exam" open={isModalOpen} onOk={()=> setIsModalOpen(true)} onCancel={()=> (setIsModalOpen(false), setInputValues({}))} footer={null}>
 
                 {Object.values(inputValues)?.map((e, i)=> (
                   <div key={i}>
