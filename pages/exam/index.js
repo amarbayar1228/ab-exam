@@ -27,9 +27,10 @@ const Exam = () => {
             return {
                 ...element[1].words, 
                 id: element[0] 
-            };
+              };
             }); 
-            setData(arrayList); 
+            const shuffledArrayList = arrayList.sort(() => Math.random() - 0.5); 
+            setData(shuffledArrayList); 
         }).catch((err)=>{
             message.error("Error")
         }).finally(()=>{
